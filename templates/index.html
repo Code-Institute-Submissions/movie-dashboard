@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Movies Dashboard</title>
+   <link rel="stylesheet" href="{{ url_for ('static',
+         filename='lib/css/bootstrap.min.css')}}">
+   <link rel="stylesheet" href="{{ url_for ('static',
+         filename='lib/css/keen-dashboards.css')}}">
+   <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
+   <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
+
+</head>
+<body class ="application">
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+   <div class="container-fluid">
+       <div class="navbar-header">
+           <a class="navbar-brand" href="./">Movies Dashboard</a>
+       </div>
+   </div>
+</div>
+
+<div  id="outer" class="container-fluid">
+
+<div class="row">
+
+       <div class="col-lg-12">
+           <div class="row">
+
+               <!-- Time Chart -->
+               <div class="col-lg-12">
+
+                   <div class="chart-wrapper">
+                       <div class="chart-title">
+                           Movie Budget Change Over Time
+                       </div>
+
+                       <div class="chart-stage">
+                           <div id="budget-time-chart"></div>
+                       </div>
+                   </div>
+               </div>
+               <!-- Time Chart -->
+
+
+
+       <!-- Primary Focus -->
+               <div class="col-lg-6">
+                   <div class="chart-wrapper">
+                       <div class="chart-title">
+                           Gross by Genre
+                       </div>
+                       <div class="chart-stage">
+                           <div id="funding-by-genre"></div>
+                       </div>
+                   </div>
+               </div>
+               <!-- Primary Focus -->
+
+                 <!-- Metric 1 -->
+       <div class="col-lg-2">
+           <div class="chart-wrapper">
+               <div class="chart-title">
+                   Total Budget
+               </div>
+               <div class="chart-stage" style=" background: #33CC99;
+                   position: relative;
+                   font-size: 29px;
+                   color: white;
+                   vertical-align: middle;
+                   text-align: center;
+                   padding-top: 12px;
+                   padding-bottom: 0px;">
+                   <div id="total-budgets-nd"></div>
+               </div>
+           </div>
+       </div>
+       <!-- Metric 1 -->
+
+       <!-- Metric 2 -->
+       <div class="col-lg-2">
+           <div class="chart-wrapper">
+               <div class="chart-title">
+                   Total Gross in USD
+               </div>
+               <div class="chart-stage">
+                   <div id="total-gross-nd"></div>
+               </div>
+           </div>
+       </div>
+       <!-- Metric 2 -->
+<!-- Metric 2 -->
+       <div class="col-lg-2">
+           <div class="chart-wrapper">
+               <div class="chart-title">
+                   Total Movies
+               </div>
+               <div class="chart-stage">
+                   <div id="total-movies-nd"></div>
+               </div>
+           </div>
+       </div>
+       <!-- Metric 2 -->
+
+<hr>
+<p class="small text-muted"> Data Visualisation Dashboard by Chris Healy</p>
+
+</div>
+
+
+<script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/crossfilter.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
+
+<script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
+<script src="{{ url_for ('static', filename='js/graph.js')}}"></script>
+<script src="{{ url_for ('static', filename='js/intro.js')}}"></script>
+
+</body>
+</html>
