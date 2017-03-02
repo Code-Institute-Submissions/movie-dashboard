@@ -13,8 +13,7 @@ MONGODB_URI = os.getenv('MONGODB_URI')
 #MONGODB_PORT = 27017
 DB_NAME = os.getenv('MONGO_DB_NAME')
 COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME')
-FIELDS = {
-        '_id': False,'director_name':True, 'gross':True, 'budget':True,'title_year':True, 'genre':True,'country':True
+FIELDS = {'_id': False,'director_name':True, 'gross':True, 'budget':True,'title_year':True, 'genre':True,'country':True
     }
 
 @app.route('/')

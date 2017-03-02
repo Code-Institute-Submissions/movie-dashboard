@@ -7,11 +7,13 @@ queue()
 
 function makeGraphs(error, projectsJson) {
 
+    var movieProject1 = projectsJson;
+
 
 
 
   //Create a Crossfilter instance
-var ndx = crossfilter(movieProjects);
+var ndx = crossfilter(movieProject1);
 
 
  //Define Dimensions
@@ -20,9 +22,6 @@ var dateDim = ndx.dimension(function (d) {
     return d["release_year"];
 });
 
-var movieBudgetDim = ndx.dimension(function (d) {
-    return d["movie_budget"];
-});
 
 var genreDim = ndx.dimension(function (d) {
     return d["gross_genre"];
@@ -36,6 +35,10 @@ var budgetTotalDim = ndx.dimension(function (d) {
     return d["total_budget"];
 });
 
+var totalMoviesDim = ndx.dimension(function (d) {
+    return d["total_movies"];
+});
+
 
 //Calculate metrics
 var numProjectsByDate = dateDim.group();
@@ -47,7 +50,7 @@ var totalBudget = budgetTotalDim.group().reduceSum(function (d) {
     return d["total_budget"];
       });
 
-    var all = ndx.groupAll();
+
    var totalMovies = ndx.groupAll().reduceSum(function (d) {
        return d["total_movies"];
    });
@@ -63,7 +66,7 @@ var totalBudget = budgetTotalDim.group().reduceSum(function (d) {
         var grossChart = dc.piechart("#funding-by-genre");
         var totalGrossND = dc.numberDisplay("#total-gross-nd");
         var totalBudgetND = dc.numberDisplay("#total-budgets-nd");
-        var totalMoviesND = dc.numberDisplay("#total-movies-nd")
+        var totalMoviesND = dc.numberDisplay("#total-movies-nd");
 
 
      timeChart
