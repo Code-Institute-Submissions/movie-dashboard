@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask
 from flask import render_template
 from pymongo import MongoClient
@@ -30,9 +31,9 @@ def movie_project():
   json_projects = []
   for project in project1:
       json_projects.append(project)
-  json_projects = json.dumps(json_projects)
+  json_projects = json.dumps(json_projects, ensure_ascii=False, encoding='utf8')
   connection.close()
-  return json_projects
+  return unicode(json_projects)
 
 
 if __name__ == '__main__':
