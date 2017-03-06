@@ -8,9 +8,13 @@
          filename='lib/css/keen-dashboards.css')}}">
    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
    <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+
 
 </head>
 <body class ="application">
+   <div  id="loading" > <img src="{{ url_for ('static', filename='image/loading.gif')}}"></div>
+<div id="blocks">
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
    <div class="container-fluid">
@@ -22,21 +26,30 @@
 
 <div  id="outer" class="container-fluid">
 
-<div class="row">
-
-       <div class="col-lg-12">
-           <div class="row">
-
-               <!-- Time Chart -->
+                 <!-- Time Chart -->
                <div class="col-lg-12">
-
                    <div class="chart-wrapper">
                        <div class="chart-title">
                            Movie Budget Change Over Time
                        </div>
-
                        <div class="chart-stage">
-                           <div id="budget-time-chart"></div>
+                           <div id="time-line-chart"></div>
+                       </div>
+                   </div>
+               </div>
+               <!-- Time Chart -->
+           </div>
+
+
+
+               <!-- Time Chart -->
+               <div class="col-lg-12">
+                   <div class="chart-wrapper">
+                       <div class="chart-title">
+                           Movie Budget Change Over Time
+                       </div>
+                       <div class="chart-stage">
+                           <div id="num-movies-per-year"></div>
                        </div>
                    </div>
                </div>
@@ -44,24 +57,74 @@
 
 
 
-       <!-- Primary Focus -->
+       <!-- Funding by Genre -->
                <div class="col-lg-6">
                    <div class="chart-wrapper">
                        <div class="chart-title">
-                           Gross by Genre
+                           Total Gross by Genre
                        </div>
                        <div class="chart-stage">
-                           <div id="funding-by-genre"></div>
+                           <div id="funding-by-genre-row-chart"></div>
                        </div>
                    </div>
                </div>
-               <!-- Primary Focus -->
 
-                 <!-- Metric 1 -->
-       <div class="col-lg-2">
+               <!-- Funding by Genre -->
+
+           <!-- Funding by Genre -->
+               <div class="col-lg-6">
+                   <div class="chart-wrapper">
+                       <div class="chart-title">
+                           Highest Grossing Movies
+                       </div>
+                       <div class="chart-stage">
+                           <div id="funding-by-title-row-chart"></div>
+                       </div>
+                   </div>
+               </div>
+</div>
+    <div class="row">                 <!-- Metric 1 -->
+       <div class="col-lg-6">
            <div class="chart-wrapper">
                <div class="chart-title">
-                   Total Budget
+                   Most Profitable Movie Leaderboard
+               </div>
+               <div class="chart-stage" style=" background: #33CC99;
+                   position: relative;
+                   font-size: 29px;
+                   color: white;
+                   vertical-align: middle;
+                   text-align: center;
+                   padding-top: 12px;
+                   padding-bottom: 0px;">
+                   <div id="most-profitable-row-chart"></div>
+               </div>
+           </div>
+       </div>
+       <!-- Metric 1 -->
+    </div>
+       </div>
+
+               <!-- Funding by Genre -->
+
+       <!-- Metric 2 -->
+       <div class="col-lg-6">
+           <div class="chart-wrapper">
+               <div class="chart-title">
+                   Total Gross Made in USD
+               </div>
+               <div class="chart-stage">
+                   <div id="total-gross-nd"></div>
+               </div>
+           </div>
+       </div>
+       <!-- Metric 2 -->
+    <div>
+                 <!-- Metric 1 -->
+       <div class="col-lg-6">
+           <div class="chart-wrapper">
+               <div class="chart-title">
+                   Total Budget Spent
                </div>
                <div class="chart-stage" style=" background: #33CC99;
                    position: relative;
@@ -76,19 +139,9 @@
            </div>
        </div>
        <!-- Metric 1 -->
+    </div>
+</div>
 
-       <!-- Metric 2 -->
-       <div class="col-lg-2">
-           <div class="chart-wrapper">
-               <div class="chart-title">
-                   Total Gross in USD
-               </div>
-               <div class="chart-stage">
-                   <div id="total-gross-nd"></div>
-               </div>
-           </div>
-       </div>
-       <!-- Metric 2 -->
 <!-- Metric 2 -->
        <div class="col-lg-2">
            <div class="chart-wrapper">
@@ -107,6 +160,8 @@
 
 </div>
 
+</div>
+
        </div>
 <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
 <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
@@ -117,7 +172,6 @@
 
 <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
 <script src="{{ url_for ('static', filename='js/graph.js')}}"></script>
-
 
 </body>
 </html>

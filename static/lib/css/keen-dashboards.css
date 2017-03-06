@@ -49,6 +49,7 @@ body.application hr {
   font-size: 14px;
   font-weight: 200;
   padding: 7px 10px 4px;
+  background-color: white;
 }
 
 .chart-wrapper .chart-stage {

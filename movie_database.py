@@ -14,7 +14,7 @@ MONGODB_URI = os.getenv('MONGODB_URI')
 #MONGODB_PORT = 27017
 DB_NAME = os.getenv('MONGO_DB_NAME')
 COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME')
-FIELDS = {'_id': False,'gross':True, 'budget':True,'title_year':True, 'genre':True,
+FIELDS = {'_id': False,'gross':True, 'budget':True,'title_year':True, 'genres':True, 'movie_title':True
     }
 
 @app.route('/')
@@ -25,7 +25,7 @@ def index():
 def movie_project():
   connection = MongoClient(MONGODB_URI)
   collection = connection[DB_NAME][COLLECTION_NAME]
-  project1 = collection.find(projection=FIELDS)
+  project1 = collection.find({"title_year": {"$gt": 2005}}, projection=FIELDS)
 
 
   json_projects = []

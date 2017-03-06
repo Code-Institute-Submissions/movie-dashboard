@@ -5,7 +5,17 @@ queue()
     .defer(d3.json, "/movies/project1")
     .await(makeGraphs);
 
+
+
 function makeGraphs(error, projectsJson) {
+    document.getElementById("loading").style.display="none";
+    document.getElementById("blocks").style.display="inline-block";
+
+    projectsJson.forEach(function (d){d["total_gross"] = +d["gross"];
+       });
+    projectsJson.forEach(function (d){d["profit"] = d["gross"] -d["budget"];
+    });
+    // projectsJson.forEach(function (d){"total_budget"})
 
 
     //Create a Crossfilter instance
@@ -15,101 +25,177 @@ function makeGraphs(error, projectsJson) {
     //Define Dimensions
 
     var dateDim = ndx.dimension(function (d) {
-        return d["release_year"];
+        return d["title_year"];
     });
 
     var genreDim = ndx.dimension(function (d) {
-        return d["gross_genre"];
+        return d["genres"];
     });
-
-    var grossTotalDim = ndx.dimension(function (d) {
-        return d["total_gross"]
+    //
+    var grossDim = ndx.dimension(function (d) {
+        return d["total_gross"];
     });
-
+    // //
     var budgetTotalDim = ndx.dimension(function (d) {
-        return d["total_budget"];
+        return d["budget"];
     });
 
-    var totalMoviesDim = ndx.dimension(function (d) {
-        return d["total_movies"];
+    var titleDim = ndx.dimension(function (d) {
+        return d["movie_title"]
     });
+
+    var profitDim = ndx.dimension(function (d) {
+        return d["profit"]
+    });
+
+    //
+    // // //
+    // var totalMoviesDim = ndx.dimension(function (d) {
+    //     return d["total_movies"];
+    // });
 
 
 //Calculate metrics
+//     var genres = genreDim.group();
     var numProjectsByDate = dateDim.group();
     var numProjectsByGenre = genreDim.group();
-    var totalGross = grossTotalDim.group().reduceSum(function (d) {
+    var totalGrossByGenre = genreDim.group().reduceSum(function (d) {
+        return d["total_gross_by_genre"];
+    });
+
+    var totalGross = ndx.groupAll().reduceSum(function (d) {
         return d["total_gross"];
     });
-    var totalBudget = budgetTotalDim.group().reduceSum(function (d) {
+
+
+    var totalBudget = ndx.groupAll().reduceSum(function (d) {
         return d["total_budget"];
     });
 
-    var totalMovies = ndx.groupAll().reduceSum(function (d) {
-        return d["total_movies"];
+
+    var filmGross = titleDim.group().reduceSum(function (d) {
+        return d["gross"]
+    });
+
+    var filmProfit = titleDim.group().reduceSum(function (d) {
+        return d["profit"]
     });
 
 
-    //Define values (to be used in charts)
-    var minDate = dateDim.bottom(1)[0]["title_year"];
-    var maxDate = dateDim.top(1)[0]["title_year"];
-
-    //Charts
-    var timeChart = dc.barChart("#chart-stage");
-    var grossChart = dc.piechart("#funding-by-genre");
-    var totalGrossND = dc.numberDisplay("#total-gross-nd");
-    var totalBudgetND = dc.numberDisplay("#total-budgets-nd");
-    var totalMoviesND = dc.numberDisplay("#total-movies-nd");
+        // //
+        // var totalMovies = ndx.groupAll().reduceSum(function (d) {
+        //     return d["total_movies"];
+        // });
 
 
-    timeChart
-        .width(1000)
-        .height(200)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(dateDim)
-        .group(numProjectsByDate)
-        .transitionDuration(500)
-        .x(d3.time.scale().domain([minDate, maxDate]))
-        .elasticY(true)
-        .xAxisLabel("Year")
-        .yAxis().ticks(4);
+        //Define values (to be used in charts)
+        var minDate = dateDim.bottom(1)[0]["title_year"];
+        var maxDate = dateDim.top(1)[0]["title_year"];
+
+        //Charts
+        var timelineChart = dc.lineChart("#time-line-chart")
+        var timeChart = dc.barChart("#num-movies-per-year");
+        var genreChart = dc.rowChart("#funding-by-genre-row-chart");
+        var totalGrossND = dc.numberDisplay("#total-gross-nd");
+        var totalBudgetND = dc.numberDisplay("#total-budgets-nd");
+        var titleGrossChart = dc.rowChart("#funding-by-title-row-chart");
+        var profitChart = dc.rowChart("#most-profitable-row-chart");
+        // var totalMoviesND = dc.numberDisplay("#total-movies-nd");
 
 
-    grossChart
-        .height(250)
-        .width(600)
-        .radius(90)
-        .innerRadius(40)
-        .transitionDuration(1500)
-        .dimension(totalGross)
-        .group(numProjectsByGenre);
+    timelineChart
+            .width(1000)
+            .height(200)
+            .margins({top: 10, right: 50, bottom: 30, left: 50})
+            .dimension(dateDim)
+            .group(filmGross,filmProfit)
+            .transitionDuration(500)
+            // .x(d3.time.scale().domain([minDate, maxDate]))
+            .x(d3.scale.linear().domain([minDate, maxDate]))
+            .elasticY(true)
+            .xAxisLabel("Year")
+            .yAxis().ticks(4);
 
 
-    totalGrossND
-        .formatNumber(d3.format("d"))
-        .valueAccessor(function (d) {
-            return d;
-        })
-        .group(totalGross)
-        .formatNumber(d3.format(".3s"));
+        timeChart
+             .ordinalColors([ "#ffd847" , "#f58277" , "#6dc2e8","#07b6ca","#9178ea","#ffbd49", "#3ce6ab","#ffd847","#f58277"])
+            .width(1000)
+            .height(200)
+            .margins({top: 10, right: 50, bottom: 30, left: 50})
+            .dimension(dateDim)
+            .group(numProjectsByDate)
+            .transitionDuration(500)
+            // .x(d3.time.scale().domain([minDate, maxDate]))
+            .x(d3.scale.linear().domain([minDate, maxDate]))
+            .elasticY(true)
+            .xAxisLabel("Year")
+            .yAxis().ticks(4);
 
 
-    totalBudgetND
-        .formatNumber(d3.format("d"))
-        .valueAccessor(function (d) {
-            return d;
-        })
-        .group(totalBudget)
-        .formatNumber(d3.format(".3s"));
-
-    totalMoviesND
-        .formatNumber(d3.format("d"))
-        .valueAccessor(function (d) {
-            return d;
-        })
-        .group(totalMovies)
-        .formatNumber(d3.format(".3s"));
+        genreChart
+            .ordinalColors([ "#ffd847" , "#f58277" , "#6dc2e8","#9178ea", "#07b6ca"])
+            .width(600)
+            .height(250)
+            .dimension(genreDim)
+            .group(numProjectsByGenre)
+            .xAxis().ticks(10);
+        genreChart.ordering(function (d) {
+            return -d.value
+        });
+        genreChart.rowsCap([5]);
+        genreChart.othersGrouper(false);
 
 
-    dc.renderAll();
-}
+
+     profitChart
+          .ordinalColors([ "#ffd847" , "#f58277" , "#6dc2e8","#9178ea", "#07b6ca"])
+      .width(600)
+         .height(250)
+       .dimension(titleDim)
+       .group(filmProfit)
+       .xAxis().ticks(10);
+       profitChart.ordering(function (d) { return -d.value});
+       profitChart.rowsCap([5]);
+        profitChart.othersGrouper(false);
+
+
+
+
+        titleGrossChart
+            .ordinalColors([ "#ffd847" , "#f58277" , "#6dc2e8","#9178ea", "#07b6ca"])
+            .width(600)
+            .height(250)
+            .dimension(titleDim)
+            .group(filmGross)
+            .xAxis().ticks(10);
+            titleGrossChart.ordering(function (d) { return -d.value});
+            titleGrossChart.rowsCap([5]);
+            titleGrossChart.othersGrouper(false);
+
+
+        totalGrossND
+            .formatNumber(d3.format("d"))
+            .valueAccessor(function (d) {
+                return d;
+            })
+            .group(totalGross);
+
+
+        totalBudgetND
+            .formatNumber(d3.format("d"))
+            .valueAccessor(function (d) {
+                return d;
+            })
+            .group(totalBudget);
+        //     .formatNumber(d3.format(".3s"));
+        // //
+        // totalMoviesND
+        //     .formatNumber(d3.format("d"))
+        //     .valueAccessor(function (d) {
+        //         return d;
+        //     })
+        //     .group(totalMovies);
+        //
+
+        dc.renderAll();
+    }

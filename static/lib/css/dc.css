@@ -18,7 +18,7 @@ div.dc-chart {
 
 .dc-chart rect.stack2 {
     stroke: none;
-    fill: green;
+    fill: white;
 }
 
 .dc-chart rect.deselected {
