@@ -16,18 +16,7 @@
    font-size: 12px;
 }
 
-#total-movies-nd {
-   background: #ffffff;
-   width: 200px;
-   position: relative;
-   height: 60px;
-   font-size: 29px;
-   color: white;
-   vertical-align: middle;
-   text-align: center;
-   padding-top: 12px;
-   padding-bottom: 0px;
-}
+
 
 .dc-select-menu {
    background: white;
@@ -56,7 +45,7 @@
    no-repeat: center center;
    padding-bottom: 150px;
    padding-left:350px;
-   background-color: #E9397B;
+   background-color: #00ADEF;
    padding-left: 100px;
    padding-top: 50px;
 
@@ -69,11 +58,5 @@
 
 body{
    font-family: 'Oxygen', sans-serif;
-
-}
-
-
-.chart-stage {
-      background-color: #ffffff;
 
 }
