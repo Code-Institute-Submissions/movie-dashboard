@@ -134,6 +134,8 @@ function makeGraphs(error, projectsJson) {
 
     var numberFormat = d3.format(".0f");
 
+    var dollarFormat = function(d) { return '$' + d3.format(',f')(d) };
+
     timelineChart
         .width(1000)
         .height(200)
@@ -235,6 +237,7 @@ function makeGraphs(error, projectsJson) {
         .height(250)
         .dimension(titleDim)
         .group(filmGross)
+        .yAxis2.tickFormat(dollarFormat)
         .xAxis().ticks(10);
     titleGrossChart.ordering(function (d) {
         return -d.value
