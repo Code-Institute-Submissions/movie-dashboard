@@ -8,10 +8,10 @@ import os
 
 app = Flask(__name__)
 
-#MONGODB_URI = os.getenv('MONGODB_URI')
+MONGODB_URI = os.getenv('MONGODB_URI')
 
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
+# MONGODB_HOST = 'localhost'
+# MONGODB_PORT = 27017
 DB_NAME = os.getenv('MONGO_DB_NAME')
 COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME')
 FIELDS = {'_id': False,'gross':True, 'budget':True,'title_year':True, 'genres':True, 'movie_title':True, 'imdb_score':True
@@ -23,7 +23,7 @@ def index():
 
 @app.route("/movies/project1")
 def movie_project():
-  connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+  connection = MongoClient(MONGODB_URI)
   collection = connection[DB_NAME][COLLECTION_NAME]
   project1 = collection.find({"title_year": {"$gt": 2005}}, projection=FIELDS)
 
