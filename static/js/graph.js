@@ -245,9 +245,8 @@ function makeGraphs(error, projectsJson) {
     titleGrossChart.othersGrouper(false);
 
 
-
     totalGrossND
-        .formatNumber(d3.format("d")+dollarFormat)
+        .formatNumber(d3.format("d"))
         .valueAccessor(function (d) {
             return d;
         })
