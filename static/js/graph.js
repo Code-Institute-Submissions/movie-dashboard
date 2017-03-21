@@ -237,7 +237,6 @@ function makeGraphs(error, projectsJson) {
         .height(250)
         .dimension(titleDim)
         .group(filmGross)
-        .yAxis2.tickFormat(dollarFormat)
         .xAxis().ticks(10);
     titleGrossChart.ordering(function (d) {
         return -d.value
@@ -246,8 +245,9 @@ function makeGraphs(error, projectsJson) {
     titleGrossChart.othersGrouper(false);
 
 
+
     totalGrossND
-        .formatNumber(d3.format("d"))
+        .formatNumber(d3.format("d")+dollarFormat)
         .valueAccessor(function (d) {
             return d;
         })
