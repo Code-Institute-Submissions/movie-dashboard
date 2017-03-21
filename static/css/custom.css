@@ -45,7 +45,7 @@
    no-repeat: center center;
    padding-bottom: 150px;
    padding-left:350px;
-   background-color: #00ADEF;
+   background-color: #00AAA0;
    padding-left: 100px;
    padding-top: 50px;
 
@@ -59,4 +59,8 @@
 body{
    font-family: 'Oxygen', sans-serif;
 
+}
+
+.navbar{
+   background-color: #00AAA0;
 }
