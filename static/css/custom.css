@@ -33,9 +33,6 @@
 
 }
 
-#most-profitable-row-chart {
-   background: white;
-}
 
 #loading {
    width:100%;
@@ -63,6 +60,6 @@ body{
    background-color: #00AAA0;
 }
 
-#bootstrap-overrides{
+#application .chart-stage{
     background-color: #ffffff;
 }
