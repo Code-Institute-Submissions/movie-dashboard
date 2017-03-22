@@ -2,10 +2,8 @@
 <html>
 <head>
    <title>Movies Dashboard</title>
-   <link rel="stylesheet" href="{{ url_for ('static',
-         filename='lib/css/bootstrap.min.css')}}">
-   <link rel="stylesheet" href="{{ url_for ('static',
-         filename='lib/css/keen-dashboards.css')}}">
+   <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/bootstrap.min.css')}}">
+   <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css')}}">
    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
    <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
@@ -107,9 +105,11 @@
                    padding-top: 12px;
                    padding-bottom: 0px;">
                    <div id="most-profitable-row-chart"></div>
+                    <div id="bootstrap-overrides"></div>
                </div>
            </div>
   </div>
+
 
     <!-- Most Expensive Movie -->
                <div class="col-lg-6">

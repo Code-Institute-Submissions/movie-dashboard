@@ -62,3 +62,7 @@ body{
 .navbar{
    background-color: #00AAA0;
 }
+
+#bootstrap-overrides{
+    background: #ffffff;
+}
