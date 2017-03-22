@@ -170,7 +170,7 @@ function makeGraphs(error, projectsJson) {
         .height(400)
         .margins({top: 30, right: 50, bottom: 50, left: 50})
         .dimension(dateDim)
-        .group(imdbYear)
+        .group(imdbRating)
         .transitionDuration(1500)
         .x(d3.scale.linear().domain([minDate, maxDate]))
         .yAxisLabel("IMDB Score")
