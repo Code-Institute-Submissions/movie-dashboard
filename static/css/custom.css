@@ -43,7 +43,7 @@
    z-index:9999;
    no-repeat: center center;
    padding-bottom: 150px;
-   padding-left:450px;
+   padding-left:400px;
    background-color: #00AAA0;
    padding-top: 50px;
 
@@ -61,8 +61,4 @@ body{
 
 .navbar{
    background-color: #00AAA0;
-}
-
-.chart-stage{
-    background: #ffffff;
 }
