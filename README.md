@@ -1,5 +1,5 @@
 # movie-dashboard
-Dashboards to display various charts for scrape of IMDB
+Dashboards to display various charts for a data scrape of IMDB from kaggle.com
 
 Live version hosted on Heroku here https://movie-dashboard.herokuapp.com/ 
 
@@ -39,9 +39,7 @@ MongoDB - cross-platform document-oriented NoSQL database program
 
 # Testing
 
-Ran series of manual tests on the application. Due to inbuil limitations of D3 Graphs, the graphs will not act responsiviley to reduced screen dimensions. Containers with Boostrap have been used to reduce the imapct of this .
-
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
+Ran series of manual tests on the application. Due to current inbuilt limitations of D3 Graphs, the graphs will not act respond correctly to reduced screen dimensions. Containers in Boostrap have been used to reduce the impact of this.
 
 # Versioning
 
@@ -58,5 +56,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 # Acknowledgments
 
 Many thanks to classmates, Niel and Richard for assisting in building this.
-Inspiration
-etc
+
