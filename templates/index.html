@@ -6,7 +6,6 @@
    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css')}}">
    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
    <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/introjs.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
 
 
@@ -19,8 +18,6 @@
    <div class="container-fluid">
        <div class="navbar-header">
            <a class="navbar-brand" href="./">Movies Dashboard</a>
-            <button class="intro_button" type="button" autofocus onclick="javascript:introJs().start();">Start Tour!
-            </button>
        </div>
    </div>
 </div>
@@ -30,7 +27,7 @@
 <div class="row">
     <!-- Movie Profit Change Over Time -->
                <div class="col-lg-12">
-                   <div class="chart-wrapper" data-step="1" data-intro="This graph displays the movie profit change over a specific time period between 2006-2013" style="font-weight: normal" data-position="bottom">
+                   <div class="chart-wrapper">
                        <div class="chart-title">
                            Movie Profit Change Over Time</div>
                        <div class="chart-stage">
@@ -43,7 +40,7 @@
 
     <!-- Movie Budget Change Over Time -->
                <div class="col-lg-12">
-                   <div class="chart-wrapper" data-step="2" data-intro="This graph displays the movie budget change over a specific time period between 2006-2013." style="font-weight: normal" data-position="top">
+                   <div class="chart-wrapper">
                        <div class="chart-title">
                            Movie Budget Change Over Time</div>
                        <div class="chart-stage">
@@ -57,7 +54,7 @@
 
   <!--  Highest Rated Movie on IMDB -->
                <div class="col-lg-12">
-                   <div class="chart-wrapper" data-step="3" data-intro="This chart displays the change over time in accumulated IMDB score per year." style="font-weight: normal" data-position="top" >
+                   <div class="chart-wrapper">
                        <div class="chart-title">
                            Highest Rated Movie on IMDB</div>
                        <div class="chart-stage">
@@ -70,7 +67,7 @@
 
        <!-- Total Gross by Genre -->
                <div class="col-lg-6">
-                   <div class="chart-wrapper" data-step="4" data-intro="This chart diplays the total Gross per Genre between the years 2006-2016." style="font-weight: normal" data-position="right">
+                   <div class="chart-wrapper">
                        <div class="chart-title">
                            Total Gross by Genre
                        </div>
@@ -84,7 +81,7 @@
 
            <!-- Highest Grossing Movies -->
                <div class="col-lg-6">
-                   <div class="chart-wrapper" data-step="5" data-intro="This chart diplays the highest Grossing Movie between 2006-2016." style="font-weight: normal" data-position="left">
+                   <div class="chart-wrapper">
                        <div class="chart-title">
                            Highest Grossing Movies</div>
                        <div class="chart-stage">
@@ -96,7 +93,7 @@
     <div>
     <!-- Most Profitable Movie Leaderboard -->
   <div class="col-lg-6">
-           <div class="chart-wrapper" data-step="6" data-intro="This chart diplays the highest Profitable Movie between 2006-2016.(Gross-Budget)" style="font-weight: normal" data-position="right">
+           <div class="chart-wrapper">
                <div class="chart-title">
                    Most Profitable Movie Leaderboard</div>
                <div class="chart-stage">
@@ -108,7 +105,7 @@
 
     <!-- Most Expensive Movie -->
                <div class="col-lg-6">
-                   <div class="chart-wrapper" data-step="7" data-intro="This chart diplays the Most Expensive Movie between 2006-2016." style="font-weight: normal" data-position="left">
+                   <div class="chart-wrapper">
                        <div class="chart-title">
                            Most Expensive Movie </div>
                        <div class="chart-stage">
@@ -122,7 +119,7 @@
 <div>
     <!-- Total Gross -->
        <div class="col-lg-6">
-           <div class="chart-wrapper" data-step="8" data-intro="This chart diplays the Total Amount Grossed in Movies between 2006-2016." style="font-weight: normal" data-position="right">
+           <div class="chart-wrapper">
                <div class="chart-title">
                    Total Gross Made in USD</div>
                <div class="chart-stage">
@@ -135,7 +132,7 @@
 
                 <!-- Total Budget Spent -->
        <div class="col-lg-6">
-           <div class="chart-wrapper" data-step="9" data-intro="This chart diplays the Total Amount Spent in Movies between 2006-2016." style="font-weight: normal" data-position="left">
+           <div class="chart-wrapper">
                <div class="chart-title">
                    Total Budget Spent </div>
                <div class="chart-stage" style=" background: #33CC99;
@@ -168,7 +165,7 @@
 
     <!--  IMDB Rating vs Profit Chart -->
    <div class="col-lg-12">
-                   <div class="chart-wrapper" data-step="10" data-intro="This bubble chart diplays the Score of Movies. Their height indicates the Budget spent, their distance right indicates a higher IMDB score. The size of the bubble indicates the profit made on the movie.NOTE - Click on a Genre in the 'Total Gross by Genre Chart' to activate. " style="font-weight: normal" data-position="top">
+                   <div class="chart-wrapper">
                        <div class="chart-title">
                            IMDB Rating vs Profit Chart</div>
                        <div class="chart-stage">
@@ -195,7 +192,6 @@
 
 <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
 <script src="{{ url_for ('static', filename='js/graph.js')}}"></script>
-<script src="{{ url_for ('static', filename='js/intro.js')}}"></script>
 
 </body>
 </html>

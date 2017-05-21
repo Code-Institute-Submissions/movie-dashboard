@@ -33,8 +33,6 @@ Flask - a lightweight Python web framework based on Werkzeug and Jinja 2
 
 dc.js - JavaScript Library for Multi-Dimensional Charting
 
-intro.js - step-by-step guide and feature introduction
-
 MongoDB - cross-platform document-oriented NoSQL database program
 
 # Testing
